@@ -1,6 +1,4 @@
 image: chataro0/packer-ansible:latest
-tags:
-    - myself
 stages:
     - test
     - deploy
@@ -16,5 +14,7 @@ verify:
 
 deploy:
     stage: deploy
+    tags:
+        - myself
     script:
         - packer build packer/main.json
