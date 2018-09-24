@@ -1,4 +1,4 @@
-image: hashicorp/packer:full
+image: self/packer-ansible:1.0
 stages:
     - test
     - deploy
