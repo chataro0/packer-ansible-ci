@@ -1,4 +1,4 @@
-image: inanimate/packer-ansible
+image: hashicorp/packer
 stages:
     - test
     - deploy
@@ -18,5 +18,4 @@ test-packer:
 deploy:
     stage: deploy
     script:
-    - apk add git
-    - git status
+    - packer build packer/main.yml
