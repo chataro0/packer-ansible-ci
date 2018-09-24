@@ -1,4 +1,4 @@
-image: self/packer-ansible:1.0
+image: chataro0/packer-ansible:latest
 stages:
     - test
     - deploy
