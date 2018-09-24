@@ -6,6 +6,7 @@ stages:
 verify:
     stage: test
     script:
+    - env | grep -i aws
     - ansible-playbook --version
     - ansible-playbook --syntax-check ansible/setup.yml
     - packer version
