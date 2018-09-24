@@ -2,11 +2,18 @@ image: inanimate/packer-ansible
 stages:
     - test
     - deploy
-test1:
+
+test-ansible:
     stage: test
     script:
+    - ansible-playbook --version
+    - ansible-playbook --syntax-check ansible/setup.yml
+
+test-packer:
+    stage: test
+    script:
+    - packer version
     - packer validate packer/main.json
-    - ls -lR
 
 deploy:
     stage: deploy
