@@ -1,4 +1,4 @@
-image: hashicorp/packer
+image: hashicorp/packer:full
 stages:
     - test
     - deploy
