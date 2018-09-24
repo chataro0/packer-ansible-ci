@@ -1,0 +1,20 @@
+- hosts: all
+  become: true
+  tasks:
+  - name: update packages
+    yum:
+      update_only: yes
+
+  - name: install Apache24 and mysql client
+    yum: pkg={{item}} state=installed
+    loop:
+    - httpd
+
+  - name: enable httpd service
+    service: name={{item}} enabled=yes
+    loop:
+    - httpd
+
+  - name: add user
+    user: 
+      name: myuser

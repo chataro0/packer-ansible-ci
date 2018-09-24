@@ -1,0 +1,15 @@
+image: inanimate/packer-ansible
+stages:
+    - test
+    - deploy
+test1:
+    stage: test
+    script:
+    - packer validate packer/main.json
+    - ls -lR
+
+deploy:
+    stage: deploy
+    script:
+    - apk add git
+    - git status

@@ -1,0 +1,27 @@
+{
+    "variables": {
+        "instance_type": "t2.micro"
+    },
+    "builders": [
+        {
+            "type": "amazon-ebs",
+            "ami_name": "ami_{{timestamp}}",
+            "instance_type": "{{user `instance_type`}}",
+            "source_ami": "ami-08847abae18baa040",
+            "ssh_username": "ec2-user",
+            "tags": [
+                {
+                    "service": "ami"
+                }
+            ]
+        }
+    ],
+    "provisioners": [
+        {
+            "playbook_file": "ansible/setup.yml",
+            "type": "ansible",
+            "user": "ec2-user",
+            "extra_arguments": ["-v"]
+        }
+    ]
+}
