@@ -7,12 +7,12 @@
 
   - name: install Apache24 and mysql client
     yum: pkg={{item}} state=installed
-    loop:
+    with_items:
     - httpd
 
   - name: enable httpd service
     service: name={{item}} enabled=yes
-    loop:
+    with_items:
     - httpd
 
   - name: add user
