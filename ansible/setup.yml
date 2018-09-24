@@ -4,16 +4,18 @@
   - name: update packages
     yum:
       update_only: yes
-      pkg: *
+      pkg: "*"
 
   - name: install Apache24 and mysql client
-    yum: pkg={{item}} state=installed
-    with_items:
+    yum: 
+      pkg: {{item}}
+      state: installed
+    loop:
     - httpd
 
   - name: enable httpd service
     service: name={{item}} enabled=yes
-    with_items:
+    loop:
     - httpd
 
   - name: add user
