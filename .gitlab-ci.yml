@@ -1,4 +1,6 @@
 image: chataro0/packer-ansible:latest
+tags:
+    - myself
 stages:
     - test
     - deploy
@@ -6,13 +8,13 @@ stages:
 verify:
     stage: test
     script:
-    - env | grep -i aws
-    - ansible-playbook --version
-    - ansible-playbook --syntax-check ansible/setup.yml
-    - packer version
-    - packer validate packer/main.json
+        - env | grep -i aws
+        - ansible-playbook --version
+        - ansible-playbook --syntax-check ansible/setup.yml
+        - packer version
+        - packer validate packer/main.json
 
 deploy:
     stage: deploy
     script:
-    - packer build packer/main.json
+        - packer build packer/main.json
