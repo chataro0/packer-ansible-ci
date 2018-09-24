@@ -5,6 +5,8 @@ stages:
 
 verify:
     stage: test
+    tags:
+        - myself
     script:
         - env | grep -i aws
         - ansible-playbook --version
@@ -14,7 +16,5 @@ verify:
 
 deploy:
     stage: deploy
-    tags:
-        - myself
     script:
         - packer build packer/main.json
