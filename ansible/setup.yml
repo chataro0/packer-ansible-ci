@@ -4,6 +4,7 @@
   - name: update packages
     yum:
       update_only: yes
+      pkg: *
 
   - name: install Apache24 and mysql client
     yum: pkg={{item}} state=installed
