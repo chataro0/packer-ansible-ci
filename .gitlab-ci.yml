@@ -3,19 +3,15 @@ stages:
     - test
     - deploy
 
-test-ansible:
+verify:
     stage: test
     script:
     - ansible-playbook --version
     - ansible-playbook --syntax-check ansible/setup.yml
-
-test-packer:
-    stage: test
-    script:
     - packer version
     - packer validate packer/main.json
 
 deploy:
     stage: deploy
     script:
-    - packer build packer/main.yml
+    - packer build packer/main.json
